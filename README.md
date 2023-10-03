@@ -37,4 +37,5 @@
 ```bash
 yarn install
 yarn start
+#open browser in http://localhost:3000/
 ```
