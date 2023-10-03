@@ -36,3 +36,16 @@ export const counterCharFromNames = async (resource, char) => {
     throw Error(error);
   }
 };
+
+export const getResultsWithTimeExecution = async (callback) => {
+  const startTime = process.hrtime();
+  const results = await callback();
+  const endTime = process.hrtime(startTime);
+  const time = endTime[0] + 's ' + endTime[1] / 1000000 + 'ms';
+
+  return {
+    time,
+    in_time: endTime[0] < 3,
+    results,
+  };
+};
