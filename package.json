@@ -1,0 +1,12 @@
+{
+  "name": "@francoeff/ricky-morty-challenge",
+  "version": "1.0.0",
+  "description": "Challenge for enter to Chipax",
+  "type": "module",
+  "main": "index.js",
+  "author": "Franco Figueroa",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./src/index.js"
+  }
+}
