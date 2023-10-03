@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { counterCharFromNames, getAllPagesOfApi } from '../src/services/helpers.js';
+import { counterCharFromNames, getAllPagesOfApi, getResultsWithTimeExecution } from '../src/services/helpers.js';
 
 jest.mock('axios');
 
@@ -94,5 +94,25 @@ describe('counterCharFromNames', () => {
     const result = await counterCharFromNames('character', 'c');
     expect(result).toEqual({ char: 'c', count: 0, resource: 'character' });
     expect(axios.get).toHaveBeenCalledWith('https://rickandmortyapi.com/api/character?page=1');
+  });
+});
+
+describe('getResultsWithTimeExecution', () => {
+  test('should show time execution of function', async () => {
+    const fetchData = () => new Promise((resolve) => setTimeout(() => resolve('done'), 1000));
+    const { time, in_time, results } = await getResultsWithTimeExecution(fetchData);
+    const seconds = parseInt(time.split('s')[0]);
+    expect(seconds).toBeLessThan(3);
+    expect(in_time).toBe(true);
+    expect(results).toBe('done');
+  });
+
+  test('should show time execution of function more than 3 seconds', async () => {
+    const fetchData = () => new Promise((resolve) => setTimeout(() => resolve('done'), 3001));
+    const { time, in_time, results } = await getResultsWithTimeExecution(fetchData);
+    const seconds = parseInt(time.split('s')[0]);
+    expect(seconds).toBeGreaterThanOrEqual(3);
+    expect(in_time).toBe(false);
+    expect(results).toBe('done');
   });
 });
