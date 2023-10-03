@@ -13,10 +13,6 @@ const getCounters = async () => {
   }));
 };
 
-getCounters().then((results) => {
-  console.log(results);
-});
-
 const getLocationsOfEpisodes = async () => {
   const locationsByEpisodes = async () =>
     await Promise.all([getEpisodes(), getCharacteres()]).then((results) => {
@@ -41,6 +37,6 @@ const getLocationsOfEpisodes = async () => {
   }));
 };
 
-getLocationsOfEpisodes().then((results) => {
-  console.log(results);
+Promise.all([getCounters(), getLocationsOfEpisodes()]).then((results) => {
+  console.log(JSON.stringify(results));
 });
