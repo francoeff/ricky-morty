@@ -21,7 +21,7 @@ const getNamesFromEndpoint = async (endpoint) => {
 
 const countCharacters = (char, text) => {
   const regChar = new RegExp(char, 'i');
-  return text.split(regChar).length;
+  return text.split(regChar).length - 1;
 };
 
 export const counterCharFromNames = async (resource, char) => {
