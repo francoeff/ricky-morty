@@ -37,6 +37,8 @@ const getLocationsOfEpisodes = async () => {
   }));
 };
 
-Promise.all([getCounters(), getLocationsOfEpisodes()]).then((results) => {
-  console.log(JSON.stringify(results));
-});
+export const runChallenge = async (showInConsole = true) => {
+  const results = await Promise.all([getCounters(), getLocationsOfEpisodes()]);
+  showInConsole && console.log(results);
+  return results;
+};
