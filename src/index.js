@@ -1,3 +1,3 @@
-import { runChallenge } from './app';
+import { runChallenge } from './app.js';
 
 runChallenge(true);
