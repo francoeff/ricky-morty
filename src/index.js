@@ -1,11 +1,5 @@
-import { getAllPagesOfApi } from './services/helpers.js';
+import { counterCharFromNames } from './services/helpers.js';
 
-getAllPagesOfApi('https://rickandmortyapi.com/api/location').then((results) => {
-  console.log(results);
-});
-getAllPagesOfApi('https://rickandmortyapi.com/api/episode').then((results) => {
-  console.log(results);
-});
-getAllPagesOfApi('https://rickandmortyapi.com/api/character').then((results) => {
-  console.log(results);
-});
+counterCharFromNames('location', 'l').then((result) => console.log(result));
+counterCharFromNames('character', 'c').then((result) => console.log(result));
+counterCharFromNames('episode', 'e').then((result) => console.log(result));

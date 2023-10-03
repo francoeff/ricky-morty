@@ -13,3 +13,26 @@ export const getAllPagesOfApi = async (urlApi) => {
   const restOfResults = responses.map((response) => response.data.results);
   return [...results, ...restOfResults.flat()];
 };
+
+const getNamesFromEndpoint = async (endpoint) => {
+  const results = await getAllPagesOfApi(`https://rickandmortyapi.com/api/${endpoint}`);
+  return results.map((result) => result.name);
+};
+
+const countCharacters = (char, text) => {
+  const regChar = new RegExp(char, 'i');
+  return text.split(regChar).length;
+};
+
+export const counterCharFromNames = async (resource, char) => {
+  try {
+    const names = await getNamesFromEndpoint(resource);
+    const namesString = names.join('');
+
+    const count = countCharacters(char, namesString);
+
+    return { char, count, resource };
+  } catch (error) {
+    throw Error(error);
+  }
+};
