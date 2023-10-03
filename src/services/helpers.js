@@ -49,3 +49,6 @@ export const getResultsWithTimeExecution = async (callback) => {
     results,
   };
 };
+
+export const getIdFromUrl = (url) => parseInt(url.split('/').slice(-1)[0]);
+export const getLocationName = (arrayToSearch, id) => arrayToSearch.find((element) => element.id === id).location.name;
