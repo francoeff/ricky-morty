@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { counterCharFromNames, getAllPagesOfApi, getResultsWithTimeExecution } from '../src/services/helpers.js';
+import { counterCharFromNames, getAllPagesOfApi, getResultsWithTimeExecution } from '../../src/services/helpers.js';
 
 jest.mock('axios');
 
