@@ -1,4 +1,4 @@
-import { runChallenge } from '../src/app';
+import { runChallenge } from '../src/app.js';
 
 describe('Result of Challenge', () => {
   test('should run two exercises', async () => {
